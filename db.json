@@ -1,0 +1,76 @@
+[
+    {
+        "imagen": "./images/mozzarella-salad.jpg",
+        "cardTitle": "Mozzarella salad",
+        "cardText": "$150",
+        "precio": 150
+    },
+
+    {
+        "imagen": "./images/arancini3.jpg",
+        "cardTitle": "Arancini",
+        "cardText": "$120",
+        "precio": 120
+    },
+    {
+        "imagen": "./images/quail.jpg",
+        "cardTitle": "Quail",
+        "cardText": "$180",
+        "precio": 180
+    },
+    {
+        "imagen": "./images/Prawns-Cocktail1.jpg",
+        "cardTitle": "Prawn Cocktail",
+        "cardText": "$200",
+        "precio": 200
+    },
+    {
+        "imagen": "./images/curry.jpg",
+        "cardTitle": "Curry",
+        "cardText": "$250",
+        "precio": 250
+    },
+    {
+        "imagen": "./images/hallibut.jpg",
+        "cardTitle": "Hallibut",
+        "cardText": "$280",
+        "precio": 280
+    },
+    {
+        "imagen": "./images/lamb.jpg",
+        "cardTitle": "Lamb",
+        "cardText": "$300",
+        "precio": 300
+    },
+    {
+        "imagen": "./images/scallops3.jpg",
+        "cardTitle": "Scallops",
+        "cardText": "$310",
+        "precio": 310
+    },
+    {
+        "imagen": "./images/helado.jpg",
+        "cardTitle": "Helado",
+        "cardText": "$70",
+        "precio": 70
+    },
+    {
+        "imagen": "./images/pavlova.jpg",
+        "cardTitle": "Pavlolva",
+        "cardText": "$100",
+        "precio": 100
+    },
+
+    {
+        "imagen": "./images/creme-brulle.jpg",
+        "cardTitle": "Creme Brulle",
+        "cardText": "$80",
+        "precio": 80
+    },
+    {
+        "imagen": "./images/chocolate-pave.jpg",
+        "cardTitle": "Chocolate Pave",
+        "cardText": "$110",
+        "precio": 110
+    }
+]

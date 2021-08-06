@@ -1,6 +1,94 @@
 
 let cliente = document.getElementById("nombre").value;
 let mesa = parseInt(document.getElementById("numeroMesa").value);
+var products= [
+  /* {
+      "imagen": "./images/mozzarella-salad.jpg",
+      "cardTitle": "Mozzarella salad",
+      "cardText": "$150",
+      "precio": 150
+  },
+
+  {
+      "imagen": "./images/arancini3.jpg",
+      "cardTitle": "Arancini",
+      "cardText": "$120",
+      "precio": 120
+  },
+  {
+      "imagen": "./images/quail.jpg",
+      "cardTitle": "Quail",
+      "cardText": "$180",
+      "precio": 180
+  },
+  {
+      "imagen": "./images/Prawns-Cocktail1.jpg",
+      "cardTitle": "Prawn Cocktail",
+      "cardText": "$200",
+      "precio": 200
+  },
+  {
+      "imagen": "./images/curry.jpg",
+      "cardTitle": "Curry",
+      "cardText": "$250",
+      "precio": 250
+  },
+  {
+      "imagen": "./images/hallibut.jpg",
+      "cardTitle": "Hallibut",
+      "cardText": "$280",
+      "precio": 280
+  },
+  {
+      "imagen": "./images/lamb.jpg",
+      "cardTitle": "Lamb",
+      "cardText": "$300",
+      "precio": 300
+  },
+  {
+      "imagen": "./images/scallops3.jpg",
+      "cardTitle": "Scallops",
+      "cardText": "$310",
+      "precio": 310
+  },
+  {
+      "imagen": "./images/helado.jpg",
+      "cardTitle": "Helado",
+      "cardText": "$70",
+      "precio": 70
+  },
+  {
+      "imagen": "./images/pavlova.jpg",
+      "cardTitle": "Pavlolva",
+      "cardText": "$100",
+      "precio": 100
+  },
+
+  {
+      "imagen": "./images/creme-brulle.jpg",
+      "cardTitle": "Creme Brulle",
+      "cardText": "$80",
+      "precio": 80
+  },
+  {
+      "imagen": "./images/chocolate-pave.jpg",
+      "cardTitle": "Chocolate Pave",
+      "cardText": "$110",
+      "precio": 110
+  } */
+]
+ fetch("./db.json").then((respuesta) => {
+    
+    return respuesta.json();
+  }).then((json) => {  
+        products = json;
+        cargaProductos() }); 
+ 
+
+    /* $.getJSON("./db.json", function(datos){
+  products=datos;
+cargaProductos()}); */
+
 
 // login
 const ingresar= ()=>{
@@ -12,6 +100,8 @@ if(cliente!== "" && mesa <25){
     mensajeValidacion.className="text-success";
     mensajeValidacion.innerHTML=`Bienvenido ${cliente}`;
     localStorage.setItem("usuario", JSON.stringify(cliente));
+    mensajeValidacion.style.display = '';
+     
     
    setTimeout(()=>{
         window.location='./index.html';
@@ -42,11 +132,6 @@ $(".menu_titulo").click(function(){
   
   
   // uso de JSON para obtener nombre de usuario
-
-  
- /* $("document").ready(function(){
-    $("#usuarios").hide();
-      }) */
   var username= JSON.parse(localStorage.getItem("usuario"));
   var newDiv= document.createElement("h2");
   newDiv.id="usuarios";
@@ -68,15 +153,18 @@ else{
 }
 }
 
+//carga de lista de menu al html
 
 //botones carrito
  const Clickbutton= document.querySelectorAll(".button")
 const tbody= document.querySelector(".tbody");
 let carrito=[];
+ 
 
-Clickbutton.forEach(btn =>{
+
+ Clickbutton.forEach(btn =>{
     btn.addEventListener("click", addToCarritoItem)
-})
+}) 
 
 function addToCarritoItem(e){
     const button= e.target
@@ -170,3 +258,4 @@ const pedido1 = new PedidoHecho (cliente, mesa, newItem)
 console.log(`hola soy ${this.nombre}, sentado en ${this.mesa}`)
 
  */
+
