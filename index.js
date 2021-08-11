@@ -1,6 +1,8 @@
 
 let cliente = document.getElementById("nombre").value;
 let mesa = parseInt(document.getElementById("numeroMesa").value);
+
+
 var products= [
   /* {
       "imagen": "./images/mozzarella-salad.jpg",
@@ -58,14 +60,14 @@ var products= [
       "precio": 70
   },
   {
-      "imagen": "./images/pavlova.jpg",
+      "imagen": "./images/pavlova2.jpg",
       "cardTitle": "Pavlolva",
       "cardText": "$100",
       "precio": 100
   },
 
   {
-      "imagen": "./images/creme-brulle.jpg",
+      "imagen": "./images/creme-brulle3.jpg",
       "cardTitle": "Creme Brulle",
       "cardText": "$80",
       "precio": 80
@@ -77,12 +79,19 @@ var products= [
       "precio": 110
   } */
 ]
- fetch("./db.json").then((respuesta) => {
-    
+ fetch("./db.json").then((respuesta) => {    
     return respuesta.json();
   }).then((json) => {  
         products = json;
-        cargaProductos() }); 
+        cargaProductos() 
+        Clickbutton= document.querySelectorAll(".button")
+    tbody= document.querySelector(".tbody");   
+
+
+ Clickbutton.forEach(btn =>{
+    btn.addEventListener("click", addToCarritoItem)
+}) 
+}); 
  
 
     /* $.getJSON("./db.json", function(datos){
@@ -156,17 +165,17 @@ else{
 //carga de lista de menu al html
 
 //botones carrito
- const Clickbutton= document.querySelectorAll(".button")
-const tbody= document.querySelector(".tbody");
+
+Clickbutton= document.querySelectorAll(".button")
+tbody= document.querySelector(".tbody");
 let carrito=[];
- 
 
 
  Clickbutton.forEach(btn =>{
     btn.addEventListener("click", addToCarritoItem)
 }) 
 
-function addToCarritoItem(e){
+ function addToCarritoItem(e){
     const button= e.target
     const item= button.closest(".card")
     const itemTitle= item.querySelector(".card-title").textContent;

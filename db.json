@@ -55,14 +55,14 @@
         "precio": 70
     },
     {
-        "imagen": "./images/pavlova.jpg",
+        "imagen": "./images/pavlova2.jpg",
         "cardTitle": "Pavlolva",
         "cardText": "$100",
         "precio": 100
     },
 
     {
-        "imagen": "./images/creme-brulle.jpg",
+        "imagen": "./images/creme-brulle3.jpg",
         "cardTitle": "Creme Brulle",
         "cardText": "$80",
         "precio": 80
