@@ -34,9 +34,6 @@
             <a class="nav-link" href="#our-menu">Menu</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Quienes somos</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Iniciar Sesion</a>
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -81,7 +78,8 @@
     </div>
   </nav>
 <!-----------------------------------home------------------------>
-  <section class="home-container">
+ 
+<section class="home-container">
     <div class="container-fluid">
       <div class="row">
         <div class="div home-bg">
@@ -97,9 +95,11 @@
     </div>
 </section>
 <!--------------------------menu-section-------------------------------------------->
+
 <section class="menu-section" id="our-menu">
   <h3 class="menu_titulo"  data-title="pedir ahora">Nuestro Menu <i class="fas fa-utensils" id="loguito"></i> </h3> 
-  <div class="container-flow ">
+  <div class="container-flow ">  
+      
     <div class="row">
       <div class="col-8" id="menu-listado" >
 
@@ -125,7 +125,7 @@
           <div class="col">
             <h3 class="itemCartTotal">Total: 0</h3>
             <div class="col d-flex justify content-end">
-              <button class="btn btn-success">Comprar</button>
+              <button class="btn btn-success"onclick= "enviarpedido()">Comprar</button>
             </div>
 
           </div>

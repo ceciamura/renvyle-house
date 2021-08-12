@@ -129,9 +129,19 @@ li .nav-link:hover{
     display: flex;
 }
 .table__productos > img{
-    width: 9rem;
+    width: 7.5rem;
     object-fit: contain;
     border-radius: 6px;
     margin-right: 20px;
     
+}
+.input__cantidad{
+    width: 3rem;
+}
+#boton-delete{
+    padding:0.5rem;
+    padding-bottom: 0.8rem;
+    
+    line-height: 0;
+
 }

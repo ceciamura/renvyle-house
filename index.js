@@ -1,84 +1,10 @@
 
 let cliente = document.getElementById("nombre").value;
 let mesa = parseInt(document.getElementById("numeroMesa").value);
+var Clickbutton=null;
+var tbody=null;
+var products= []
 
-
-var products= [
-  /* {
-      "imagen": "./images/mozzarella-salad.jpg",
-      "cardTitle": "Mozzarella salad",
-      "cardText": "$150",
-      "precio": 150
-  },
-
-  {
-      "imagen": "./images/arancini3.jpg",
-      "cardTitle": "Arancini",
-      "cardText": "$120",
-      "precio": 120
-  },
-  {
-      "imagen": "./images/quail.jpg",
-      "cardTitle": "Quail",
-      "cardText": "$180",
-      "precio": 180
-  },
-  {
-      "imagen": "./images/Prawns-Cocktail1.jpg",
-      "cardTitle": "Prawn Cocktail",
-      "cardText": "$200",
-      "precio": 200
-  },
-  {
-      "imagen": "./images/curry.jpg",
-      "cardTitle": "Curry",
-      "cardText": "$250",
-      "precio": 250
-  },
-  {
-      "imagen": "./images/hallibut.jpg",
-      "cardTitle": "Hallibut",
-      "cardText": "$280",
-      "precio": 280
-  },
-  {
-      "imagen": "./images/lamb.jpg",
-      "cardTitle": "Lamb",
-      "cardText": "$300",
-      "precio": 300
-  },
-  {
-      "imagen": "./images/scallops3.jpg",
-      "cardTitle": "Scallops",
-      "cardText": "$310",
-      "precio": 310
-  },
-  {
-      "imagen": "./images/helado.jpg",
-      "cardTitle": "Helado",
-      "cardText": "$70",
-      "precio": 70
-  },
-  {
-      "imagen": "./images/pavlova2.jpg",
-      "cardTitle": "Pavlolva",
-      "cardText": "$100",
-      "precio": 100
-  },
-
-  {
-      "imagen": "./images/creme-brulle3.jpg",
-      "cardTitle": "Creme Brulle",
-      "cardText": "$80",
-      "precio": 80
-  },
-  {
-      "imagen": "./images/chocolate-pave.jpg",
-      "cardTitle": "Chocolate Pave",
-      "cardText": "$110",
-      "precio": 110
-  } */
-]
  fetch("./db.json").then((respuesta) => {    
     return respuesta.json();
   }).then((json) => {  
@@ -150,7 +76,9 @@ $(".menu_titulo").click(function(){
   "font-size":"30px", "margin":"60px",
   "position":"absolute" })
 
-  
+if(username=== null){
+  $("#usuarios").hide()
+}
 //bloqueo de botones hasta usuario registrado
 const habilitar=()=>{
    
@@ -162,19 +90,9 @@ else{
 }
 }
 
-//carga de lista de menu al html
+
 
 //botones carrito
-
-Clickbutton= document.querySelectorAll(".button")
-tbody= document.querySelector(".tbody");
-let carrito=[];
-
-
- Clickbutton.forEach(btn =>{
-    btn.addEventListener("click", addToCarritoItem)
-}) 
-
  function addToCarritoItem(e){
     const button= e.target
     const item= button.closest(".card")
@@ -190,8 +108,9 @@ let carrito=[];
     }
     addItemCarrito(newItem)
 }
-
+var carrito=[]
 function addItemCarrito(newItem){
+  
   const cantitadElegida= tbody.getElementsByClassName("input__cantidad")
   for(let i=0; i<carrito.length;i++)
   if(carrito[i].title===newItem.title){
@@ -203,8 +122,7 @@ function addItemCarrito(newItem){
   }
     carrito.push(newItem)
     renderCarrito()
-}
-
+};
 function renderCarrito(){
     tbody.innerHTML = ''
     carrito.map(item => {
@@ -220,13 +138,14 @@ function renderCarrito(){
               <td class="table__price"><p>${item.precio}</p></td>
               <td class="table__cantidad">
                 <input type="number" min="1" value=${item.cantidad} class="input__cantidad">
-                <button class="delete btn btn-danger">x</button>
+                <button class="delete btn btn-danger"id="boton-delete">x</button>
               </td>`
       tr.innerHTML = Content;
       tbody.append(tr)
 
       tr.querySelector(".delete").addEventListener("click",removeItemCarrito);
-})  
+      tr.querySelector(".input__cantidad").addEventListener("change", sumaCantidad)
+    })  
 carritoTotal()
 }
 
@@ -238,6 +157,7 @@ const precio= Number(item.precio.replace("$", ""))
 total= total+precio*item.cantidad;
 })
 itemCartTotal.innerHTML=`Total $ ${total}`
+agregarLocalSt()
 }
 
 
@@ -253,6 +173,29 @@ itemCartTotal.innerHTML=`Total $ ${total}`
       tr.remove()
       carritoTotal()
       
+}
+function sumaCantidad(e){
+  const sumaInput= e.target
+  const tr= sumaInput.closest (".ItemCarrito")
+  const title= tr.querySelector(".title").textContent;
+  carrito.forEach(item=>{
+    if(item.title=== title){
+      sumaInput.value <1 ?(sumaInput.value=1): sumaInput.value;
+      item.cantidad=sumaInput.value;
+      carritoTotal()
+    }
+  })
+}
+
+function agregarLocalSt(){
+  localStorage.setItem("carrito", JSON.stringify(carrito))
+}
+window.onload= function(){
+  const storage= JSON.parse(localStorage.getItem("carrito"));
+  if(storage){
+    carrito=storage
+    renderCarrito()
+  }
 }
 
 //objeto pedido hecho
